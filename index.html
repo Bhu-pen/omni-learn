@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Omni-Learn | Master Any Subject</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="app-container">
+        <!-- Left Sidebar Navigation -->
+        <nav id="sidebar">
+            <div class="logo-container">
+                <h1 class="logo">Omni</h1>
+            </div>
+            <ul class="nav-links">
+                <li class="nav-item active" data-tab="learn">
+                    <span class="icon">🏠</span>
+                    <span class="label">Learn</span>
+                </li>
+                <li class="nav-item" data-tab="practice">
+                    <span class="icon">💪</span>
+                    <span class="label">Practice</span>
+                </li>
+                <li class="nav-item" data-tab="leaderboard">
+                    <span class="icon">🛡️</span>
+                    <span class="label">Leaderboard</span>
+                </li>
+                <li class="nav-item" data-tab="quests">
+                    <span class="icon">📜</span>
+                    <span class="label">Quests</span>
+                </li>
+                <li class="nav-item" data-tab="shop">
+                    <span class="icon">🛍️</span>
+                    <span class="label">Shop</span>
+                </li>
+                <li class="nav-item" data-tab="profile">
+                    <span class="icon">👤</span>
+                    <span class="label">Profile</span>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Main Content Area -->
+        <main id="main-content">
+            <!-- Top Bar (Mobile/Sticky) -->
+            <header class="top-bar">
+                <div class="subject-selector">
+                    <span class="flag-icon">⚛️</span>
+                    <span class="subject-name">Physics 101</span>
+                </div>
+                <div class="stats-display">
+                    <div class="stat-item fire-streak">
+                        <span class="icon">🔥</span>
+                        <span class="value">0</span>
+                    </div>
+                    <div class="stat-item gems">
+                        <span class="icon">💎</span>
+                        <span class="value">500</span>
+                    </div>
+                    <div class="stat-item hearts">
+                        <span class="icon">❤️</span>
+                        <span class="value">5</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Learn Tab Content (The Path) -->
+            <div id="learn-view" class="view-section active">
+                <div class="unit-group">
+                    <div class="unit-header" style="background-color: var(--color-primary);">
+                        <div class="unit-info">
+                            <h2>Unit 1</h2>
+                            <p>Introduction to Motion</p>
+                        </div>
+                        <button class="btn btn-guide">
+                            <span>📖 Guidebook</span>
+                        </button>
+                    </div>
+
+                    <div class="path-container" id="path-unit-1">
+                        <!-- Levels will be injected here by JS -->
+                    </div>
+                </div>
+
+                <div class="unit-group">
+                    <div class="unit-header" style="background-color: var(--color-secondary);">
+                        <div class="unit-info">
+                            <h2>Unit 2</h2>
+                            <p>Forces & Newton's Laws</p>
+                        </div>
+                        <button class="btn btn-guide">
+                            <span>📖 Guidebook</span>
+                        </button>
+                    </div>
+                    <div class="path-container" id="path-unit-2">
+                        <!-- Levels will be injected here by JS -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Views are lazily created by script.js -->
+
+            <!-- Placeholder views for other tabs -->
+            <!-- Practice View (Custom Tests) -->
+            <div id="practice-view" class="view-section hidden">
+                <div class="view-header">
+                    <h2>Practice Arena</h2>
+                </div>
+                <div class="practice-container">
+                    <!-- Option 1: Topic -->
+                    <div class="practice-card">
+                        <div class="card-icon">🧠</div>
+                        <h3>Generate from Topic</h3>
+                        <p>Enter any subject, and AI will create a unique test for you.</p>
+                        <input type="text" id="custom-topic" placeholder="e.g. Quantum Physics, French Revolution..."
+                            class="form-input">
+                        <select id="custom-difficulty" class="form-select">
+                            <option value="easy">Easy</option>
+                            <option value="medium" selected>Medium</option>
+                            <option value="hard">Hard</option>
+                        </select>
+                        <button class="btn btn-primary" onclick="startCustomTopic()">Start Quiz</button>
+                    </div>
+
+                    <!-- Option 2: Upload -->
+                    <div class="practice-card">
+                        <div class="card-icon">📄</div>
+                        <h3>Upload Study Material</h3>
+                        <p>Upload a PDF, and AI will quiz you on its content.</p>
+                        <input type="file" id="pdf-upload" accept=".pdf" class="file-input">
+                        <button class="btn btn-secondary" onclick="startPdfUpload()">Generate from PDF</button>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+
+        <!-- Right Sidebar (Stats/Leaderboard) -->
+        <aside id="right-panel">
+            <div class="panel-card streak-card">
+                <h3>Try Super Omni</h3>
+                <p>No ads, personalized practice, and unlimited hearts!</p>
+                <button class="btn btn-super">Try 2 weeks free</button>
+            </div>
+
+            <div class="panel-card ranking-card">
+                <h3>Daily Ranking</h3>
+                <div class="ranking-list">
+                    <div class="rank-item">
+                        <span class="rank-num">1</span>
+                        <span class="rank-name">Einstein</span>
+                        <span class="rank-xp">1240 XP</span>
+                    </div>
+                    <!-- More mocked rankings -->
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Exercise Overlay (Hidden by default) -->
+    <div id="exercise-overlay" class="hidden">
+        <div class="exercise-header">
+            <button class="btn-close" id="quit-exercise">✕</button>
+            <div class="progress-bar-container">
+                <div class="progress-bar-fill" style="width: 0%"></div>
+            </div>
+            <div class="hearts-display">
+                ❤️ <span id="exercise-hearts">5</span>
+            </div>
+        </div>
+
+        <div class="exercise-content">
+            <h2 class="question-text" id="question-text">Translate this sentence</h2>
+            <div class="question-area" id="question-area">
+                <!-- Question content goes here -->
+            </div>
+        </div>
+
+        <div class="exercise-footer">
+            <div class="result-message hidden" id="result-message">
+                <div class="message-icon"></div>
+                <div class="message-text">
+                    <h3 id="feedback-title">Correct!</h3>
+                    <p id="feedback-detail"></p>
+                </div>
+            </div>
+            <button class="btn btn-check" id="check-answer">Check</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
