@@ -4,7 +4,7 @@
 $host = "localhost";
 $username = "root";
 $password = "";
-$database = "";
+$database = "omni_learn";
 
 $conn = new mysqli($host, $username, $password, $database);
 
@@ -170,14 +170,14 @@ $conn->close();
     <button type="submit" class="btn btn-primary btn-submit">Create Account</button>
 </form>
 
-        </form>
+      
 
         <a href="index.html" class="login-link">Already have an account?</a>
     </div>
 
     <script>
-        document.getElementById('signup-form').addEventListener('submit', function (e) {
-            e.preventDefault();
+        document.getElementById('signup-form').addEventListener('submit', function () {
+
             const nameInput = this.querySelector('input[type="text"]');
             const name = nameInput.value.trim() || "Learner";
             
